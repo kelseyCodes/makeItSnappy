@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Make it Snappy</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body ng-app="makeItSnappy" ng-controller="mainCtrl">
+
+<div id="canvas" ng-click="clickCoords()">
+<hr>
+
+<div id="marble" class="marble" ></div>
+
+<div id="goal">	
+</div>
+
+</div>
+
+<div id="score">
+<h1>Score:</h1>
+<h1>{{ score }}</h1>
+</div>
+<button ng-click="reload()">Restart</button>
+
+<h3 ng-show="done">GAME OVER</h3>
+
+
+  <script src="./node_modules/angular/angular.js"></script>
+  <script type="text/javascript" src="canvas.js"></script>
+</body>
+</html>

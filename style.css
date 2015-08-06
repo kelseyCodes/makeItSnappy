@@ -1,0 +1,63 @@
+#canvas {
+	width: 80vw;
+	height: 100vh;
+	border: 1px solid black;
+	float: left;
+}
+
+#score {
+	width: 16vw;
+	height: 40vh;
+	border: 1px solid black;
+	float: left;
+	margin-left: 2vw;
+	margin-top: 20vh;
+}
+
+hr {
+	margin-top: 20vh;
+	border-style: double;
+}
+
+.marble {
+	height: 50px;
+	width: 50px;
+	border-radius: 25px;
+	background-color: blue;
+	position: absolute;
+	right: 60%;
+	bottom: 0vh;
+	-webkit-animation-name: roll;
+	-webkit-animation-duration: 7s;
+	-webkit-animation-timing-function: linear; 
+	-webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes roll {
+	from {bottom: 0%;}
+	to {bottom: 90%;}
+}
+
+
+h1 {
+	margin-left: 5px;
+}
+
+
+#goal {
+	height: 50px;
+	width: 50px;
+	border-radius: 25px;
+	border: 2px solid;
+	border-color: blue;
+	position: absolute;
+	right: 60%;
+	bottom: 75vh;
+}
+
+.marbleDone {}
+
+button {
+	margin-left: 25px;
+	margin-top: 10px;
+}
