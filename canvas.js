@@ -10,7 +10,7 @@ app.controller('mainCtrl', function($scope, $window, sound) {
 	$scope.score = 0;
 	$scope.done = false;
 
-	gest.start();
+	//gest.start();
 
 
 	  $scope.recording = new sound.Recording(function(data){
@@ -49,22 +49,23 @@ app.controller('mainCtrl', function($scope, $window, sound) {
 		 	$scope.score -= 10;
 		 }
 
-		 if ($scope.score < -1000) {
+		 if ($scope.score < -40) {
 		 	$scope.marble.className = "marbleDone";
 		 	$scope.done = true;
-		 	$scope.score = -30;
+		 	$scope.score = -50;
 		 }
 	
 	};
 
-	gest.options.subscribeWithCallback(function(gesture){
-		if(gesture.right) $scope.goal.style.right = '45%';
-		if(gesture.left) $scope.goal.style.right = '75%';
-	})
+	// gest.options.subscribeWithCallback(function(gesture){
+	// 	if(gesture.right) $scope.goal.style.right = '45%';
+	// 	if(gesture.left) $scope.goal.style.right = '75%';
+	// })
 
 	$scope.arrows = function($event) {
 		if ($event.keyCode === 39) $scope.goal.style.right = '45%';
 		if ($event.keyCode === 37) $scope.goal.style.right = '75%';
+		if ($event.keyCode === 40) $scope.goal.style.right = '60%';
 	}
 
 

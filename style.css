@@ -1,9 +1,16 @@
+body {
+	background-color: rgb(129, 219, 192);
+}
+
 #canvas {
-	width: 80vw;
-	height: 100vh;
 	border: 1px solid black;
 	float: left;
+	background-image: url(http://backgrounds.picaboo.com/download/7b/b8/7b81d1046e2c48738771be3ecd97ff89/plain%20sky%20and%20clouds.jpg);
+	width: 75vw;
+	height: 100vh;
 }
+
+
 
 #score {
 	width: 16vw;
@@ -12,12 +19,13 @@
 	float: left;
 	margin-left: 2vw;
 	margin-top: 20vh;
+	background-color: rgb(243, 250, 180);
+	font-size: 30px;
+	font-family: Courier New;
+	text-align: center;
 }
 
-hr {
-	margin-top: 20vh;
-	border-style: double;
-}
+
 
 .marble {
 	height: 50px;
@@ -58,6 +66,17 @@ h1 {
 .marbleDone {}
 
 button {
-	margin-left: 25px;
-	margin-top: 10px;
+	margin-top: 70vh;
+  display: inline;
+  height: 40px;
+  width: 90px;
+  border-radius: 10px;
+  background-color: white;
+  border-color: rgb(148, 148, 148);
+  font-size: 15px;
+}
+
+button:hover {
+	border-color: black;
+	border-width: 3px;
 }

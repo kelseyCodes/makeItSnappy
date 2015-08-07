@@ -11,6 +11,8 @@ app.factory('sound', function() {
             var audioContext = null;
             var callback = cb;
 
+ 
+
             navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
                 navigator.mozGetUserMedia || navigator.msGetUserMedia;
 
@@ -18,27 +20,27 @@ app.factory('sound', function() {
                 navigator.getUserMedia({
                         audio: true
                     },
-                    function(e) { //success
+                    function(stream) { //success
+
                         var AudioContext = window.AudioContext || window.webkitAudioContext;
                         audioContext = new AudioContext();
                         volume = audioContext.createGain(); // creates a gain node
-                        audioInput = audioContext.createMediaStreamSource(e); // creates an audio node from the mic stream
+                        audioInput = audioContext.createMediaStreamSource(stream); // creates an audio node from the mic stream
                         audioInput.connect(volume); // connect the stream to the gain node
-                        recorder = audioContext.createScriptProcessor(1024, 2, 1);
+                        recorder = audioContext.createScriptProcessor(2048, 1, 1);
 
                         var start = Date.now();
 
-                        recorder.onaudioprocess = function(e) {
-                            console.log(Date.now() - start);
+                        recorder.onaudioprocess = function(stream) {
                             if (!recording) return;
-                            var left = e.inputBuffer.getChannelData(0);
+                            var left = stream.inputBuffer.getChannelData(0);
                             //var right = e.inputBuffer.getChannelData(1);
                             callback(new Float32Array(left));
                         };
                         volume.connect(recorder); // connect the recorder
                         recorder.connect(audioContext.destination);
                     },
-                    function(e) { //failure
+                    function(error) { //failure
                         alert('Error capturing audio.');
                     }
                 );
