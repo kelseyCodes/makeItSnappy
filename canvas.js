@@ -4,11 +4,17 @@ Array.prototype.randomElement =	function(){
 	return this[Math.floor(Math.random()*this.length)]
 }
 
-app.controller('mainCtrl', function($scope, $window) {
-
-	$scope.score = 0;
+app.controller('mainCtrl', function($scope, $window, sound) {
 	$scope.marble = document.getElementById('marble');
 	$scope.goal = document.getElementById('goal');
+
+	  $scope.recording = new sound.Recording(function(data){
+      	if(sound.detectClap(data)){
+        		angular.element('#canvas').trigger('click');
+      	 }
+      });
+
+	$scope.score = 0;
 	$scope.done = false;
 	var rateArr = [4,7,5,6,3];
 	var rate;
