@@ -20,12 +20,12 @@ hr {
 }
 
 .marble {
-	height: 50px;
-	width: 50px;
-	border-radius: 25px;
-	background-color: blue;
+	/*height: 50px;
+	width: 50px;*/
+	/*border-radius: 25px;
+	background-color: blue;*/
 	position: absolute;
-	right: 60%;
+	right: 55%;
 	bottom: 0vh;
 	-webkit-animation-name: roll;
 	-webkit-animation-duration: 7s;
@@ -45,11 +45,11 @@ h1 {
 
 
 #goal {
-	height: 50px;
-	width: 50px;
-	border-radius: 25px;
-	border: 2px solid;
-	border-color: blue;
+	height: 150px;
+	width: 150px;
+	/*border-radius: 25px;*/
+	/*border: 2px solid;*/
+/*	border-color: #11e7d7;*/
 	position: absolute;
 	right: 60%;
 	bottom: 75vh;

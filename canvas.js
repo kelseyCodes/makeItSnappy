@@ -1,7 +1,7 @@
-window.app = angular.module('makeItSnappy',[]);
+window.app = angular.module('makeItSnappy', []);
 
-Array.prototype.randomElement =	function(){
-	return this[Math.floor(Math.random()*this.length)]
+Array.prototype.randomElement = function() {
+	return this[Math.floor(Math.random() * this.length)]
 }
 
 app.controller('mainCtrl', function($scope, $window, sound) {
@@ -10,48 +10,45 @@ app.controller('mainCtrl', function($scope, $window, sound) {
 	$scope.score = 0;
 	$scope.done = false;
 
-	  $scope.recording = new sound.Recording(function(data){
-      	if(sound.detectClap(data)){
-        		angular.element('#canvas').trigger('click');
-      	 }
-      });
+	$scope.recording = new sound.Recording(function(data) {
+		if (sound.detectClap(data)) {
+			angular.element('#canvas').trigger('click');
+		}
+	});
 
-	var rateArr = [4,7,5,6,3];
+	var rateArr = [4, 7, 5, 6, 3];
 	var rate;
-	var colorArr = ["blue", "red", "green", "orange"];
-	var color;
+	// var colorArr = ["blue", "red", "green", "orange"];
+	// var color;
 	var fireArr = [45, 60, 75];
 	var fire;
 
 	$scope.clickCoords = function() {
-		 var coordinates = [];
-		 var targetCoords = [];
-			
+		var coordinates = [];
+		var targetCoords = [];
 
-		 coordinates.push(
-	     	$scope.marble.offsetLeft, $scope.marble.offsetTop
-	     )
-	     
-	       
-	     targetCoords.push(
-	     	$scope.goal.offsetLeft, $scope.goal.offsetTop
-	     )
 
-		 if(coordinates[0] < targetCoords[0] + 20 
-		 	&& coordinates[0] > targetCoords[0] - 20
-		 	&& coordinates[1] < targetCoords[1] + 20
-			&& coordinates[1] > targetCoords[1] - 20) {
-		 	$scope.score += 10;
-		 } else {
-		 	$scope.score -= 10;
-		 }
+		coordinates.push(
+			$scope.marble.offsetLeft, $scope.marble.offsetTop
+		)
 
-		 if ($scope.score < -20) {
-		 	$scope.marble.className = "marbleDone";
-		 	$scope.done = true;
-		 	$scope.score = -30;
-		 }
-	
+
+		targetCoords.push(
+			$scope.goal.offsetLeft, $scope.goal.offsetTop
+		)
+
+		if (coordinates[0] < targetCoords[0] + 20 && coordinates[0] > targetCoords[0] - 20 && coordinates[1] < targetCoords[1] + 20 && coordinates[1] > targetCoords[1] - 20) {
+			$scope.score += 10;
+		} else {
+			$scope.score -= 10;
+		}
+
+		if ($scope.score < -20) {
+			$scope.marble.className = "marbleDone";
+			$scope.done = true;
+			$scope.score = -30;
+		}
+
 	};
 
 	$scope.arrows = function($event) {
@@ -60,27 +57,24 @@ app.controller('mainCtrl', function($scope, $window, sound) {
 	}
 
 
-	
 
-		 $scope.marble.addEventListener('webkitAnimationIteration', function(){;
-		 		
-		 		rate = rateArr.randomElement();
-		 		color = colorArr.randomElement();
-		 		fire = fireArr.randomElement();
+	$scope.marble.addEventListener('webkitAnimationIteration', function() {;
 
-		 		$scope.goal.style.borderColor = color;
-		 		$scope.goal.style.right = "60%";
+		rate = rateArr.randomElement();
+		// color = colorArr.randomElement();
+		fire = fireArr.randomElement();
 
-		 		$scope.marble.style.webkitAnimationDuration = rate + "s"
-		 		$scope.marble.style.right = fire + "%";
-		 		$scope.marble.style.backgroundColor = color;
+		$scope.goal.style.borderColor = color;
+		$scope.goal.style.right = "60%";
 
-		 })
+		$scope.marble.style.webkitAnimationDuration = rate + "s"
+		$scope.marble.style.right = fire + "%";
+		// $scope.marble.style.backgroundColor = color;
 
-	$scope.reloadMe = function(){ 
+	})
+
+	$scope.reloadMe = function() {
 		$window.location.reload();
 	}
 
 });
-
-

@@ -3,6 +3,7 @@
 <head>
   <title>Make it Snappy</title>
   <link rel="stylesheet" type="text/css" href="style.css">
+   <link rel="stylesheet" type="text/css" href="bird.css">
 </head>
 
 <body ng-app="makeItSnappy" ng-controller="mainCtrl" tabindex="0" ng-keydown="arrows($event)" >
@@ -10,9 +11,24 @@
 <div id="canvas" ng-click="clickCoords()">
 <hr>
 
-<div id="marble" class="marble"></div>
+<div id="marble" class="marble">
+<div class="globe" >
+	<div class="bird">
+		<div class="body">
+	  	<div class="eye left"></div>
+	  	<div class="eye right"></div>
+	  	<div class="beak"><div></div></div>
+	  	<div class="feet"></div>
+	    <div class="wire"></div>
+		</div>
+		<div class="hills"></div>
+		<div class="cloud"></div>
+		<div class="cloud small"></div>
+	</div>
+</div>
+</div>
 
-<div id="goal">	
+<img id="goal" src="http://exchangedownloads.smarttech.com/public/content/72/725b9d68-67a4-408f-8247-5b2365b0cf03/previews/medium/0001.png">	
 </div>
 
 </div>
