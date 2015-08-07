@@ -10,6 +10,9 @@ app.controller('mainCtrl', function($scope, $window, sound) {
 	$scope.score = 0;
 	$scope.done = false;
 
+	gest.start();
+
+
 	  $scope.recording = new sound.Recording(function(data){
       	if(sound.detectClap(data)){
         		angular.element('#canvas').trigger('click');
@@ -46,13 +49,18 @@ app.controller('mainCtrl', function($scope, $window, sound) {
 		 	$scope.score -= 10;
 		 }
 
-		 if ($scope.score < -20) {
+		 if ($scope.score < -1000) {
 		 	$scope.marble.className = "marbleDone";
 		 	$scope.done = true;
 		 	$scope.score = -30;
 		 }
 	
 	};
+
+	gest.options.subscribeWithCallback(function(gesture){
+		if(gesture.right) $scope.goal.style.right = '45%';
+		if(gesture.left) $scope.goal.style.right = '75%';
+	})
 
 	$scope.arrows = function($event) {
 		if ($event.keyCode === 39) $scope.goal.style.right = '45%';

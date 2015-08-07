@@ -24,9 +24,12 @@ app.factory('sound', function() {
                         volume = audioContext.createGain(); // creates a gain node
                         audioInput = audioContext.createMediaStreamSource(e); // creates an audio node from the mic stream
                         audioInput.connect(volume); // connect the stream to the gain node
-                        recorder = audioContext.createScriptProcessor(2048, 1, 1);
+                        recorder = audioContext.createScriptProcessor(1024, 2, 1);
+
+                        var start = Date.now();
 
                         recorder.onaudioprocess = function(e) {
+                            console.log(Date.now() - start);
                             if (!recording) return;
                             var left = e.inputBuffer.getChannelData(0);
                             //var right = e.inputBuffer.getChannelData(1);
@@ -44,15 +47,16 @@ app.factory('sound', function() {
             }
         },
         detectClap: function(data) {
+
             var t = (new Date()).getTime();
-            if (t - lastClap < 200) return false; // TWEAK HERE
+            if (t - lastClap < 200) return false; 
             var zeroCrossings = 0,
                 highAmp = 0;
             for (var i = 1; i < data.length; i++) {
-                if (Math.abs(data[i]) > 0.25) highAmp++; // TWEAK HERE
+                if (Math.abs(data[i]) > 0.25) highAmp++; 
                 if (data[i] > 0 && data[i - 1] < 0 || data[i] < 0 && data[i - 1] > 0) zeroCrossings++;
             }
-            if (highAmp > 20 && zeroCrossings > 30) { // TWEAK HERE
+            if (highAmp > 20 && zeroCrossings > 30) { 
                 lastClap = t;
                 return true;
             }
