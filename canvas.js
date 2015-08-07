@@ -7,6 +7,8 @@ Array.prototype.randomElement =	function(){
 app.controller('mainCtrl', function($scope, $window, sound) {
 	$scope.marble = document.getElementById('marble');
 	$scope.goal = document.getElementById('goal');
+	$scope.score = 0;
+	$scope.done = false;
 
 	  $scope.recording = new sound.Recording(function(data){
       	if(sound.detectClap(data)){
@@ -14,13 +16,11 @@ app.controller('mainCtrl', function($scope, $window, sound) {
       	 }
       });
 
-	$scope.score = 0;
-	$scope.done = false;
 	var rateArr = [4,7,5,6,3];
 	var rate;
 	var colorArr = ["blue", "red", "green", "orange"];
 	var color;
-	var fireArr = [30,50,80,65];
+	var fireArr = [45, 60, 75];
 	var fire;
 
 	$scope.clickCoords = function() {
@@ -49,9 +49,17 @@ app.controller('mainCtrl', function($scope, $window, sound) {
 		 if ($scope.score < -20) {
 		 	$scope.marble.className = "marbleDone";
 		 	$scope.done = true;
+		 	$scope.score = -30;
 		 }
 	
 	};
+
+	$scope.arrows = function($event) {
+		if ($event.keyCode === 39) $scope.goal.style.right = '45%';
+		if ($event.keyCode === 37) $scope.goal.style.right = '75%';
+	}
+
+
 	
 
 		 $scope.marble.addEventListener('webkitAnimationIteration', function(){;
@@ -61,7 +69,7 @@ app.controller('mainCtrl', function($scope, $window, sound) {
 		 		fire = fireArr.randomElement();
 
 		 		$scope.goal.style.borderColor = color;
-		 		$scope.goal.style.right = fire + "%";
+		 		$scope.goal.style.right = "60%";
 
 		 		$scope.marble.style.webkitAnimationDuration = rate + "s"
 		 		$scope.marble.style.right = fire + "%";

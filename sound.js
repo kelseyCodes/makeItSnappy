@@ -3,7 +3,6 @@ var lastClap = (new Date()).getTime();
 app.factory('sound', function() {
 
     return {
-
         Recording: function(cb) {
             var recorder = null;
             var recording = true;
@@ -61,10 +60,4 @@ app.factory('sound', function() {
         }
     }
 
-    // var rec = new Recording(function(data){
-    //   if(detectClap(data)){
-    //     console.log('clap!');
-    //     document.bgColor = 'rgb('+Math.random()*255+','+Math.random()*255+','+Math.random()*255+')';
-    //   }
-    // });
 })

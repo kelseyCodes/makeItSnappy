@@ -5,12 +5,12 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
-<body ng-app="makeItSnappy" ng-controller="mainCtrl">
+<body ng-app="makeItSnappy" ng-controller="mainCtrl" tabindex="0" ng-keydown="arrows($event)" >
 
 <div id="canvas" ng-click="clickCoords()">
 <hr>
 
-<div id="marble" class="marble" ></div>
+<div id="marble" class="marble"></div>
 
 <div id="goal">	
 </div>
@@ -21,7 +21,7 @@
 <h1>Score:</h1>
 <h1>{{ score }}</h1>
 </div>
-<button ng-click="reload()">Restart</button>
+<button ng-click="reloadMe()">Restart</button>
 
 <h3 ng-show="done">GAME OVER</h3>
 
