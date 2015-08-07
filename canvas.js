@@ -10,14 +10,48 @@ app.controller('mainCtrl', function($scope, $window, sound) {
 	$scope.score = 0;
 	$scope.done = false;
 
-	//gest.start();
+	function setupRecorder(stream, callback) {
+		console.log("recorindg stream", stream);
+      var AudioContext = window.AudioContext || window.webkitAudioContext;
+                        audioContext = new AudioContext();
+                        volume = audioContext.createGain(); // creates a gain node
+                        audioInput = audioContext.createMediaStreamSource(stream); // creates an audio node from the mic stream
+                        audioInput.connect(volume); // connect the stream to the gain node
+                        recorder = audioContext.createScriptProcessor(2048, 1, 1);
+
+                        var start = Date.now();
+
+                        recorder.onaudioprocess = function(stream) {
+                            // if (!recording) return;
+                            //console.log("recording", Date.now() - start);
+                            var left = stream.inputBuffer.getChannelData(0);
+                            //var right = e.inputBuffer.getChannelData(1);
+                            callback(new Float32Array(left));
+                        };
+                        volume.connect(recorder); // connect the recorder
+
+                        var gainNode = audioContext.createGain();
+                        // debugger;
+                        gainNode.gain.value = 0;
+                        recorder.connect(gainNode);
+                        gainNode.connect(audioContext.destination);
 
 
-	  $scope.recording = new sound.Recording(function(data){
-      	if(sound.detectClap(data)){
+	}
+	gest.start(setupRecorder, 
+		function(data){
+      		if(sound.detectClap(data)){
         		angular.element('#canvas').trigger('click');
-      	 }
-      });
+      		}
+
+      	});
+
+	  // $scope.recording = new sound.Recording(function(data){
+   //    	if(sound.detectClap(data)){
+   //      		angular.element('#canvas').trigger('click');
+   //    	 }
+   //    });
+
 
 	var rateArr = [4,7,5,6,3];
 	var rate;
@@ -57,10 +91,10 @@ app.controller('mainCtrl', function($scope, $window, sound) {
 	
 	};
 
-	// gest.options.subscribeWithCallback(function(gesture){
-	// 	if(gesture.right) $scope.goal.style.right = '45%';
-	// 	if(gesture.left) $scope.goal.style.right = '75%';
-	// })
+	gest.options.subscribeWithCallback(function(gesture){
+		if(gesture.right) $scope.goal.style.right = '45%';
+		if(gesture.left) $scope.goal.style.right = '75%';
+	})
 
 	$scope.arrows = function($event) {
 		if ($event.keyCode === 39) $scope.goal.style.right = '45%';
