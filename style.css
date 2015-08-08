@@ -8,6 +8,7 @@ body {
 	background-image: url(http://backgrounds.picaboo.com/download/7b/b8/7b81d1046e2c48738771be3ecd97ff89/plain%20sky%20and%20clouds.jpg);
 	width: 75vw;
 	height: 100vh;
+	margin-right: 5px;
 }
 
 
@@ -18,7 +19,7 @@ body {
 	border: 1px solid black;
 	float: left;
 	margin-left: 3vw;
-	margin-top: 20vh;
+	margin-top: 10vh;
 	background-color: rgb(243, 250, 180);
 	font-size: 30px;
 	font-family: Courier New;
@@ -103,4 +104,12 @@ button {
 button:hover {
 	border-color: black;
 	border-width: 3px;
+}
+
+#instructions {
+	display: inline;
+	width: 500px;
+	font-family: Courier New;
+	text-align: left;
+	margin-left: 10px;
 }
