@@ -5,6 +5,7 @@ Array.prototype.randomElement = function() {
 app.controller('mainCtrl', function($scope, $window, sound) {
 	$scope.marble = document.getElementById('marble');
 	$scope.goal = document.getElementById('goal');
+	$scope.globe = document.getElementsByClassName('globe');
 	$scope.score = 0;
 	$scope.done = false;
 
@@ -49,7 +50,7 @@ app.controller('mainCtrl', function($scope, $window, sound) {
 
 	var rateArr = [4, 7, 5, 6, 3];
 	var rate;
-	//var colorArr = ["blue", "red", "green", "orange"];
+	var colorArr = ["blue", "red", "#11e7d7", "orange"];
 	var color;
 	var fireArr = [45, 60, 75];
 	var fire;
@@ -100,7 +101,7 @@ app.controller('mainCtrl', function($scope, $window, sound) {
 	$scope.marble.addEventListener('webkitAnimationIteration', function() {;
 
 		rate = rateArr.randomElement();
-		//color = colorArr.randomElement();
+		color = colorArr.randomElement();
 		fire = fireArr.randomElement();
 
 		$scope.goal.style.borderColor = color;
@@ -108,9 +109,9 @@ app.controller('mainCtrl', function($scope, $window, sound) {
 
 		$scope.marble.style.webkitAnimationDuration = rate + "s"
 		$scope.marble.style.right = fire + "%";
-		//$scope.marble.style.backgroundColor = color;
-
-	})
+		$scope.globe[0].style.borderColor = color;
+	// console.log($scope.globe);
+})
 
 	$scope.reloadMe = function() {
 		$window.location.reload();
