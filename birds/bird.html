@@ -1,24 +1,31 @@
+
 <div tabindex="0" ng-keydown="arrows($event)">
-	<div id="canvas" ng-click="clickCoords()" >
-
-	<button >Bird (Original)</button>
-	<button>Fat Man</button>
-
-	<div id="marble" class="marble"></div>
-
-	<div id="goal">	
-	</div>
-
-	</div>
-
-
-
-	<div id="score">
-	<h1>Score</h1>
-	<h1>{{ score }}</h1>
-	</div>
-	<button ng-click="reloadMe()">Restart</button>
-
-	<h3 ng-show="done">GAME OVER</h3>
-
+    <div id="canvas" ng-click="clickCoords()">
+        <div id="marble" class="marble globe" >
+<!--             <div class="globe">
+ -->                <div class="bird">
+                    <div class="body">
+                        <div class="eye left"></div>
+                        <div class="eye right"></div>
+                        <div class="beak">
+                            <div></div>
+                        </div>
+                        <div class="feet"></div>
+                        <div class="wire"></div>
+                    </div>
+                    <!-- <div class="hills"></div> -->
+                    <div class="cloud"></div>
+                    <div class="cloud small"></div>
+                </div>
+            <!-- </div> -->
+        </div>
+        <img id="goal" src="http://exchangedownloads.smarttech.com/public/content/72/725b9d68-67a4-408f-8247-5b2365b0cf03/previews/medium/0001.png">
+    </div>
+</div>
+<div id="score">
+    <h1>Score</h1>
+    <h1>{{ score }}</h1>
+</div>
+<button ng-click="reloadMe()">Restart</button>
+<h3 ng-show="done">GAME OVER</h3>
 </div>

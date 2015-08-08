@@ -30,8 +30,8 @@ body {
 .marble {
 	height: 50px;
 	width: 50px;
-	border-radius: 25px;
-	background-color: blue;
+   border-radius: 25px;
+/*   background-color: blue;*/
 	position: absolute;
 	right: 60%;
 	bottom: 0vh;
@@ -63,11 +63,11 @@ h3 {
 
 
 #goal {
-	height: 50px;
-	width: 50px;
-	border-radius: 25px;
+	height: 100px;
+	width: 100px;
+	border-radius: 60px;
 	border: 2px solid;
-	border-color: blue;
+	border-color: #11e7d7;
 	position: absolute;
 	right: 60%;
 	bottom: 75vh;
