@@ -1,0 +1,22 @@
+<div tabindex="0" ng-keydown="arrows($event)">
+	<div id="canvas" ng-click="clickCoords()" >
+
+
+	<div id="marble" class="marble"></div>
+
+	<div id="goal">	
+	</div>
+
+	</div>
+
+
+
+	<div id="score">
+	<h1>Score</h1>
+	<h1>{{ score }}</h1>
+	</div>
+	<button ng-click="reloadMe()">Restart</button>
+
+	<h3 ng-show="done">GAME OVER</h3>
+
+</div>

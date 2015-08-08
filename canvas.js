@@ -1,5 +1,3 @@
-window.app = angular.module('makeItSnappy',[]);
-
 Array.prototype.randomElement =	function(){
 	return this[Math.floor(Math.random()*this.length)]
 }
@@ -87,6 +85,7 @@ app.controller('mainCtrl', function($scope, $window, sound) {
 		 	$scope.marble.className = "marbleDone";
 		 	$scope.done = true;
 		 	$scope.score = -50;
+		 	gest.stop();
 		 }
 	
 	};
@@ -94,6 +93,7 @@ app.controller('mainCtrl', function($scope, $window, sound) {
 	gest.options.subscribeWithCallback(function(gesture){
 		if(gesture.right) $scope.goal.style.right = '45%';
 		if(gesture.left) $scope.goal.style.right = '75%';
+		if(gesture.up) $scope.goal.style.right = '60%';
 	})
 
 	$scope.arrows = function($event) {

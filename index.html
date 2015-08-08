@@ -1,36 +1,26 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+	<base href="/" />
   <title>Make it Snappy</title>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="icon" 
+      type="image/png" 
+      href="https://s-media-cache-ak0.pinimg.com/236x/22/d5/9c/22d59c3424b1550ec52964e4c118c282.jpg">
 </head>
 
-<body ng-app="makeItSnappy" ng-controller="mainCtrl" tabindex="0" ng-keydown="arrows($event)" >
+<body ng-app="makeItSnappy">
 
-<div id="canvas" ng-click="clickCoords()" >
+<ui-view></ui-view>
 
-
-<div id="marble" class="marble"></div>
-
-<div id="goal">	
-</div>
-
-</div>
-
-
-
-<div id="score">
-<h1>Score</h1>
-<h1>{{ score }}</h1>
-</div>
-<button ng-click="reloadMe()">Restart</button>
-
-<h3 ng-show="done">GAME OVER</h3>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="./node_modules/angular/angular.js"></script>
+  <script src="./node_modules/angular-ui-router/release/angular-ui-router.js"></script>
   <script type="text/javascript" src="./gest.js/src/gest.js"></script>
+  <script type="text/javascript" src="angularApp.js"></script>
   <script type="text/javascript" src="canvas.js"></script>
+  <script type="text/javascript" src="birdState.js"></script>
   <script type="text/javascript" src="sound.js"></script>
 </body>
 </html>
