@@ -1,7 +1,7 @@
 app.config(function ($stateProvider) {
     $stateProvider.state('bird', {
         url: '/',
-        templateUrl: 'bird.html',
+        templateUrl: 'birds/bird.html',
         controller: 'mainCtrl'
     });
 });
