@@ -594,7 +594,6 @@ window.gest = (function(window) {
 			// successCallback
 			function(_LocalMediaStream) {
 				stream = _LocalMediaStream;
-				console.log("STREAM", stream);
 
 				gest.setupRecording(stream, gest.handleClap);
 

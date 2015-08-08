@@ -1,12 +1,5 @@
-<<<<<<< HEAD
 Array.prototype.randomElement =	function(){
 	return this[Math.floor(Math.random()*this.length)]
-=======
-window.app = angular.module('makeItSnappy', []);
-
-Array.prototype.randomElement = function() {
-	return this[Math.floor(Math.random() * this.length)]
->>>>>>> master
 }
 
 app.controller('mainCtrl', function($scope, $window, sound) {
@@ -16,7 +9,7 @@ app.controller('mainCtrl', function($scope, $window, sound) {
 	$scope.done = false;
 
 	function setupRecorder(stream, callback) {
-		console.log("recorindg stream", stream);
+		
 		var AudioContext = window.AudioContext || window.webkitAudioContext;
 		audioContext = new AudioContext();
 		volume = audioContext.createGain(); // creates a gain node
@@ -27,16 +20,12 @@ app.controller('mainCtrl', function($scope, $window, sound) {
 		var start = Date.now();
 
 		recorder.onaudioprocess = function(stream) {
-			// if (!recording) return;
-			//console.log("recording", Date.now() - start);
 			var left = stream.inputBuffer.getChannelData(0);
-			//var right = e.inputBuffer.getChannelData(1);
 			callback(new Float32Array(left));
 		};
 		volume.connect(recorder); // connect the recorder
 
 		var gainNode = audioContext.createGain();
-		// debugger;
 		gainNode.gain.value = 0;
 		recorder.connect(gainNode);
 		gainNode.connect(audioContext.destination);
@@ -66,7 +55,6 @@ app.controller('mainCtrl', function($scope, $window, sound) {
 	var fire;
 
 	$scope.clickCoords = function() {
-<<<<<<< HEAD
 		 var coordinates = [];
 		 var targetCoords = [];
 			
@@ -102,38 +90,6 @@ app.controller('mainCtrl', function($scope, $window, sound) {
 		if(gesture.right) $scope.goal.style.right = '45%';
 		if(gesture.left) $scope.goal.style.right = '75%';
 		if(gesture.up) $scope.goal.style.right = '60%';
-=======
-		var coordinates = [];
-		var targetCoords = [];
-
-
-		coordinates.push(
-			$scope.marble.offsetLeft, $scope.marble.offsetTop
-		)
-
-
-		targetCoords.push(
-			$scope.goal.offsetLeft, $scope.goal.offsetTop
-		)
-
-		if (coordinates[0] < targetCoords[0] + 20 && coordinates[0] > targetCoords[0] - 20 && coordinates[1] < targetCoords[1] + 20 && coordinates[1] > targetCoords[1] - 20) {
-			$scope.score += 10;
-		} else {
-			$scope.score -= 10;
-		}
-
-		if ($scope.score < -400) {
-			$scope.marble.className = "marbleDone";
-			$scope.done = true;
-			$scope.score = -50;
-		}
-
-	};
-
-	gest.options.subscribeWithCallback(function(gesture) {
-		if (gesture.right) $scope.goal.style.right = '45%';
-		if (gesture.left) $scope.goal.style.right = '75%';
->>>>>>> master
 	})
 
 	$scope.arrows = function($event) {
