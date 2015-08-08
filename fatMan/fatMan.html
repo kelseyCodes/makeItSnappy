@@ -1,8 +1,9 @@
 <div tabindex="0" ng-keydown="arrows($event)">
+	<!-- <button class="stateBtn" style="margin-right: 125px;" ui-sref="bird">Bird</button>
+	<button class="stateBtn" ui-sref="fatMan">Fat Man</button> -->
+
 	<div id="canvas" ng-click="clickCoords()" >
 
-	<button>Bird (Original)</button>
-	<button>Fat Man</button>
 	
 	<div id="marble" class="marble"></div>
 
@@ -15,7 +16,7 @@
 	<h1>Score</h1>
 	<h1>{{ score }}</h1>
 	</div>
-	<button ng-click="reloadMe()">Restart</button>
+	<button class="reload" ng-click="reloadMe()">Restart</button>
 
 	<h3 ng-show="done">GAME OVER</h3>
 

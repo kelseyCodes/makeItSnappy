@@ -75,12 +75,26 @@ h3 {
 
 .marbleDone {}
 
-button {
-	margin-left: 130px;
+.reload {
+  margin-left: 130px;
   margin-right: 100px;
   margin-top: 30px;
   margin-bottom: 30px;
   display: inline;
+}
+
+.stateBtn {
+	float: right;
+	margin-right: 20px;
+	margin-top: 50px;
+}
+
+button {
+/*	margin-left: 130px;
+  margin-right: 100px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: inline;*/
   height: 40px;
   width: 90px;
   border-radius: 10px;
